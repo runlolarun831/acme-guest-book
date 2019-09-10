@@ -26,6 +26,11 @@
         }
       }
 
+      async componentDidMount() {
+        const guests = (await axios.get('/api/guests')).data;
+        this.setState({guests});
+      }
+
 
       render() {
         const { guests } = this.state;
@@ -34,7 +39,7 @@
         }
         return (
           <ul>
-            {guests.map(user => <li key={guest.id}>{guest.name}</li>)}
+            {guests.map(guest => <li key={guest.id}>{guest.name}</li>)}
           </ul>
         )
       }
