@@ -30,13 +30,22 @@ button, input {
     class AddName extends Component {
       constructor() {
         super();
+        this.state = {
+          guest: []
+        }
+        this.signIn = this.signIn.bind(this)
+      }
+
+      signIn() {
+
       }
 
       render() {
+        const {signIn} = this;
         return (
-        <form>
+        <form onSubmit = { ev => ev.preventDefault() }>
           <input />
-          <button> Sign In</button>
+          <button onClick = {signIn} > Sign In</button>
         </form>
         )
       }
