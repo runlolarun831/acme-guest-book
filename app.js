@@ -20,7 +20,13 @@ http.createServer((req, res )=> {
     .then(data => {
       res.write(data);
       res.end();
-      })
+      })}
+      else if(req.url === '/') {
+        readFile('./index.html')
+        .then(data => {
+          res.write(data);
+          res.end();
+          })
       .catch(ex => {
         res.statusCode = 500;
         res.write(ex.message);
