@@ -13,6 +13,24 @@ const readFile = (file) => {
   });
 };
 
+const addGuest = (guest)=> {
+  return readFile('./guests.json')
+    .then(data => {
+      const guests = JSON.parse(data);
+      let max = guests.reduce((acc, guest) => {
+        if(guest.id > acc){
+          acc = guest.id;
+        }
+        return acc;
+      }, 0);
+      guest.id = max + 1;
+      guests.push(guest);
+      return writeFile('./guests.json', JSON.stringify(guests));
+    })
+    .then(()=> {
+      return guest;
+    });
+    }
 
 http.createServer((req, res )=> {
   if(req.url === '/api/guests') {
